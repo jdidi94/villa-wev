@@ -1,5 +1,7 @@
 import {
   LOGIN,
+  VERIFY_USER,
+  VERIFY_USER__PAGE_UNLOADED,
   REGISTER,
   LOGIN_PAGE_UNLOADED,
   REGISTER_PAGE_UNLOADED,
@@ -14,6 +16,7 @@ const auth = (state = {}, action) => {
     case LOGIN:
     case REGISTER:
     case GOOGLE_LOGIN:
+    case VERIFY_USER:
       return {
         ...state,
         inProgress: false,
@@ -22,12 +25,14 @@ const auth = (state = {}, action) => {
     case LOGIN_PAGE_UNLOADED:
     case REGISTER_PAGE_UNLOADED:
     case GOOGLE_LOGIN_PAGE_UNLOADED:
-      return {};
+    case VERIFY_USER__PAGE_UNLOADED:
+      return { inProgress: false };
     case ASYNC_START:
       if (
         action.subtype === LOGIN ||
         action.subtype === REGISTER ||
-        action.subtype === GOOGLE_LOGIN
+        action.subtype === GOOGLE_LOGIN ||
+        action.subtype === VERIFY_USER
       ) {
         return { ...state, inProgress: true };
       }

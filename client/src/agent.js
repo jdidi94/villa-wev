@@ -36,6 +36,7 @@ const user = {
   register: (username, email, password) =>
     requests.post("/user/signup", { username, email, password }),
   googleLogin: (tokenId) => requests.post("/user/googleLogin", { tokenId }),
+  verifyUser: (token) => requests.post("/user/verifyUser", { token }),
 };
 export default {
   setToken: (_token) => {

@@ -1,0 +1,41 @@
+.verify-email{
+    position: absolute;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom:0px;
+    /* margin: 0 auto !important; */
+    display :flex;
+    justify-content:center;
+    align-items :center;
+    flex-direction :column;
+    background: linear-gradient(
+    var(--color-primary-m-light),
+    var(--color-primary-m-light)
+  ),
+    url("../../../public/img/hero.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.verify-email--button {
+    padding: 0.5rem;
+    border: none;
+    font-size: calc(0.7rem + 0.55vw);
+    font-weight: 300;
+    
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 2rem;
+    border: 0.2rem solid var(--color-secondary);
+    transform: scaleX(1);
+    transition: background-color 0.45s cubic-bezier(1, 0, 0, 1);
+    color: var(--color-tertiary);
+    cursor: pointer;
+  }
+  
+  .verify-email .verify-email--button:hover,
+  .verify-email .verify-email--button:active {
+    background-color: var(--color-tertiary);
+    color: var(--color-quaternary);
+  }

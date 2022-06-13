@@ -1,6 +1,7 @@
 import React from "react";
 // import agent from './agent'
 import Register from "./authentication/register";
+import VerifyEmail from "./authentication/verifyEmail";
 import Home from "./welcome/home";
 import Login from "./authentication/login";
 import Profile from "./authentication/profile";
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/email" element={<VerifyEmail />} />
         <Route exact path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>

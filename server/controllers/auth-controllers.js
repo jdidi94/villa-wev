@@ -118,7 +118,7 @@ exports.signUp = async (req, res) => {
         to: email,
         subject: "VLV Verify account",
         html: `<p>enjoy an experience with huge number of villas to rent and buy<p>
-        <a href="${process.env.URL_ACTIVATION}/${Token}" >Verify account</a>`,
+        <a href="${process.env.URL_ACTIVATION}" >Verify account</a>`,
       };
 
       mg.messages().send(data, function (error, body) {
@@ -128,6 +128,7 @@ exports.signUp = async (req, res) => {
         return res.status(200).json({
           user: {
             message: "Email has been sent, please activate your account",
+            token: Token,
           },
         });
       });
@@ -138,25 +139,25 @@ exports.signUp = async (req, res) => {
 };
 exports.activateAccount = async (req, res) => {
   const { token } = req.body;
+
   // const user = await User.findById(req.payload.id);
   if (token) {
     jwt.verify(token, process.env.SECRET, (err, decodeData) => {
       if (err) {
-        return res.status().json({ errors: "Incorrect or expired link" });
-      }
-      const { username, email, password } = decodeData;
-      const useData = new User();
+        return res.status(400).json({ errors: "Incorrect or expired link" });
+      } else {
+        const { username, email, password } = decodeData;
+        const useData = new User();
 
-      useData.username = username;
-      useData.email = email;
-      useData.setPassword(password);
-      useData.save((err, success) => {
-        if (err) {
-          return res.status(400).json({ errors: err });
-        }
-        return res.status(200).json({ user: useData.toAuthJSON() });
-      });
+        useData.username = username;
+        useData.email = email;
+        useData.setPassword(password);
+        useData.save((err, success) => {
+          return res.status(200).json({ user: useData.toAuthJSON() });
+        });
+      }
     });
+  } else {
+    return res.status(400).json({ error: "something went wrong..." });
   }
-  return res.status(400).json({ error: "something went wrong..." });
 };
