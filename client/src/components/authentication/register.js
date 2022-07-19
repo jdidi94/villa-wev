@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import agent from "../../agent";
 import Auth from "../../services/auth-services";
+import ListErrors from "./listerrors";
 import { connect } from "react-redux";
 import {
   UPDATE_FIELD_AUTH,
@@ -17,8 +18,7 @@ const Register = (props) => {
   const [colorPass, setColorPass] = useState("white");
   const [errorPass, setErrorPass] = useState("");
   const [errorPassrepeat, setErrorPassrepeat] = useState("");
-  // const [colorPassRepeat, setColorPassrepeat] = useState("white");
-  // const [repeatPassword, setRepeatPassword] = useState("");
+
   const [registerInput, setRegisterInput] = useState({
     username: "",
     password: "",
@@ -173,6 +173,7 @@ const Register = (props) => {
             Sign in
           </a>
         </p>
+        <ListErrors listerrors={props.errors} />
       </form>
     </section>
   );

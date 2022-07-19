@@ -3,6 +3,8 @@ import React from "react";
 import Booking from "./booking";
 import MenuBar from "./menuBar";
 import Searching from "./searching";
+import BookingDate from "./booking-date";
+
 // import { Route, Switch } from 'react-router-dom';
 const Home = () => {
   return (
@@ -10,6 +12,7 @@ const Home = () => {
       <MenuBar />
       <Searching />
       <Booking />
+      <BookingDate />
     </div>
   );
 };

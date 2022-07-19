@@ -1,10 +1,8 @@
 const express = require("express");
 const env = require("dotenv").config();
-const errorhandler = require("errorhandler");
 const cookieParser = require("cookie-parser");
 const passport = require("./config/passport");
 
-const MongoStore = require("connect-mongo");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
